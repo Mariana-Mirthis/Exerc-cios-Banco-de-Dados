@@ -21,10 +21,19 @@ dados = cursor.execute('SELECT nome, saldo FROM clientes ORDER BY saldo DESC LIM
 # d) Contar quantos clientes têm saldo acima de 1000:
 dados = cursor.execute('SELECT COUNT(*) AS total_clientes FROM clientes WHERE saldo > 1000')
 
+# 7. Atualização e Remoção com Condições
+
+# a) Atualizar o saldo de um cliente específico:
+dados = cursor.execute('UPDATE clientes SET saldo = 1500 WHERE nome = "Wagner Silva"')
+
+# b) Remover um cliente pelo seu ID:
+dados = cursor.execute('DELETE FROM clientes WHERE nome = "Sandra Oliveira"')
+
+
 
 
 for compras in dados:
     print(compras)
-    
+
 exercicios5.commit()
 exercicios5.close
