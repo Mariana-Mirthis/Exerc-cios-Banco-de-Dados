@@ -29,7 +29,20 @@ dados = cursor.execute('UPDATE clientes SET saldo = 1500 WHERE nome = "Wagner Si
 # b) Remover um cliente pelo seu ID:
 dados = cursor.execute('DELETE FROM clientes WHERE nome = "Sandra Oliveira"')
 
+# 8. Junção de Tabelas
 
+cursor.execute("""CREATE TABLE compras (id_compras INT PRIMARY KEY, id_cliente INT, produto VARCHAR(200), valor REAL, FOREIGN KEY (id_cliente) REFERENCES clientes (id_clientes));""")
+
+# a) - Inserindo Compras:
+
+cursor.execute("""INSERT INTO compras (id_cliente, produto, valor) VALUES (1, 'Livro', 50.00), (2, 'Camisa', 100.00), (3, 'Celular', 1500.00), (4, 'Jogo', 80.00), (5, 'Eletrônico', 200.00);""")
+
+# b) - Exibindo Nome do Cliente, Produto e Valor:
+dados = cursor.execute("""
+SELECT clientes.nome, compras.produto, compras.valor
+FROM compras
+INNER JOIN clientes ON clientes.id_clientes = compras.id_cliente;
+""")
 
 
 for compras in dados:
