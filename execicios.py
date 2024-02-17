@@ -13,6 +13,24 @@ cursor.execute('INSERT INTO alunos (id, nome, idade, curso) VALUES (3, "Cristian
 cursor.execute('INSERT INTO alunos (id, nome, idade, curso) VALUES (4, "Ronaldo Santos", 23, "Administração");')
 cursor.execute('INSERT INTO alunos (id, nome, idade, curso) VALUES (5, "Daniel Mendes", 24, "Ciências da Computação");')
 
+# 3. Consultas Básicas
+
+# a) Selecionar todos os registros da tabela "alunos".
+dados = cursor.execute('SELECT * FROM alunos')
+
+# b) Selecionar o nome e a idade dos alunos com mais de 20 anos.
+dados = cursor.execute('SELECT nome, idade FROM alunos WHERE idade > 20')
+
+# c) Selecionar os alunos do curso de "Engenharia" em ordem alfabética
+dados = cursor.execute('SELECT * FROM alunos WHERE curso = "Engenharia" ORDER BY nome ASC')
+
+# d) Contar o número total de alunos na tabela
+dados = cursor.execute('SELECT COUNT(*) AS total_alunos FROM alunos')
+
+for alunos in dados:
+    print(alunos)
+
+
 
 exercicios.commit()
 exercicios.close
