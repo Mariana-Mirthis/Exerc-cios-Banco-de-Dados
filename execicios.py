@@ -27,6 +27,14 @@ dados = cursor.execute('SELECT * FROM alunos WHERE curso = "Engenharia" ORDER BY
 # d) Contar o número total de alunos na tabela
 dados = cursor.execute('SELECT COUNT(*) AS total_alunos FROM alunos')
 
+# 4. Atualização e Remoção
+
+# a) Atualize a idade de um aluno específico na tabela
+dados = cursor.execute('UPDATE alunos SET idade = 20 WHERE id = 3')
+
+# b) Remova um aluno pelo seu ID.
+dados = cursor.execute('DELETE FROM alunos WHERE id = 5')
+
 for alunos in dados:
     print(alunos)
 
